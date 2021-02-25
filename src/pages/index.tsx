@@ -3,6 +3,7 @@ import Profile from '../components/Profile';
 import style from '../styles/pages/Home.module.css'
 import CompletedChangelles from "../components/CompletedChangelles";
 import Countdown from "../components/Countdown";
+import ChangelleBox from "../components/changelleBox";
 
 export default function Home() {
   return (
@@ -16,7 +17,7 @@ export default function Home() {
           <Countdown />
         </div>
         <div>
-
+          <ChangelleBox />
         </div>
       </section>
     </div>
