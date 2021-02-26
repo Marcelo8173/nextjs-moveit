@@ -1,9 +1,11 @@
 import style from '../../styles/components/Countdown.module.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { ChangelleContext } from '../../context/changelleContext';
 
 let countDownTimeOut: NodeJS.Timeout
 
 export default function Countdown() {
+    const { startNew } = useContext(ChangelleContext);
 
     const [time, setTime] = useState(25 * 60);
     const [isAtivo, setAtivo] = useState(false);
@@ -32,6 +34,7 @@ export default function Countdown() {
         } else if (isAtivo && time === 0) {
             setHasEnd(true);
             setAtivo(false);
+            startNew();
         }
     },[isAtivo,time])
     
