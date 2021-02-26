@@ -1,22 +1,23 @@
 import style from '../../styles/components/changelleBox.module.css';
+import { useContext } from 'react';
+import { ChangelleContext } from '../../context/changelleContext';
 
 export default function changelleBox() {
-
-    const hasAc = true;
+    const {acChan,reset } = useContext(ChangelleContext);
 
     return (
         <div className={style.container}>
-            {hasAc ? 
+            {acChan ? 
                 <div className={style.active}>
-                    <header>Ganhe 400xp</header>
+                    <header>Ganhe {acChan.amount}xp</header>
                     <main>
-                        <img src="icons/body.svg" alt=""/>
+                        <img src={`icons/${acChan.type}.svg`} alt=""/>
                         <strong>Novo desafio</strong>
-                        <p>Levante e faça uma caminhada de 3 minutos</p>
+                        <p>{acChan.description}</p>
                     </main>
 
                     <footer>
-                        <button className={style.failbutton}>Falhei</button>
+                        <button onClick={reset} className={style.failbutton}>Falhei</button>
                         <button className={style.failsucess}>Completei</button>
                     </footer>
                 </div>

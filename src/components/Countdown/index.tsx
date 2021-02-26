@@ -25,7 +25,7 @@ export default function Countdown() {
         setAtivo(false);
         setTime(25 * 60);
     }
-
+    
     useEffect(() => {
         if (isAtivo && time > 0) {
             countDownTimeOut = setTimeout(() => {

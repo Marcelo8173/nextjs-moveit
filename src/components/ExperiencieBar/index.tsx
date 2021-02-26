@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from '../../styles/components/ExperiencieBar.module.css';
+import { ChangelleContext } from '../../context/changelleContext';
 
 const ExperiencieBar: React.FC = () => {
+    const { currentExp, expeNextLevel } = useContext(ChangelleContext);
+    
+    const percentToNext = Math.round((currentExp * 100)) / expeNextLevel; 
     return (
         <header className={styles.experienceBar}>
             <span>0 xp</span>
                 <div>
-                    <div style={{ width: '50%' }} />
-                    <span style={{ left: '50%' }} className={styles.currentExperience}>300 xp</span>
+                    <div style={{ width: `${percentToNext}%` }} />
+                    <span style={{ left: `${percentToNext}0%` }} className={styles.currentExperience}>{currentExp} xp</span>
                 </div>
-            <span>600 px</span>
+            <span>{expeNextLevel} px</span>
         </header>
     );
 }
